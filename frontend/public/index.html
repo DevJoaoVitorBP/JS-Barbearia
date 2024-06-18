@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Barbearia Online</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav> 
+    <ul>
+      <li><a href="index.html">Agendar</a></li>
+      <li><a href="agendamentos.html">Gerenciar Agendamentos</a></li>
+    </ul>
+  </nav>
+  <h1>Gerenciar Agendamentos</h1>
+  <h1>Agende seu horário na Barbearia!</h1>
+
+  <div id="calendario">
+    <label for="dia">Selecione o dia:</label><br>
+    <input type="date" id="dia" name="dia" value=""> 
+  </div>
+
+  <div id="formulario">
+    <input type="hidden" id="agendamentoId">
+
+    <label for="horario">Horário:</label><br>
+    <select id="horario" name="horario">
+      <option value="">Selecione um horário</option> 
+    </select><br>
+
+    <label for="nome">Nome:</label><br>
+    <input type="text" id="nome" name="nome"><br><br>
+
+    <label for="tipoCorte">Tipo de Corte:</label><br>
+    <select id="tipoCorte" name="tipoCorte">
+      <option value="">Selecione o tipo de corte</option>
+      <option value="Corte Completo">Corte Completo</option>
+      <option value="Barba">Barba</option>
+      <option value="Pezinho">Pezinho</option>
+    </select><br><br>
+
+    <button onclick="agendar()">Agendar</button>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

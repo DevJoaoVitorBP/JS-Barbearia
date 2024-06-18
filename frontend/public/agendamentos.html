@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerenciar Agendamentos</title>
+  <link rel="stylesheet" href="css/style.css"> 
+</head>
+<body>
+  <nav> 
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="gerenciar_agendamentos.html">Gerenciar Agendamentos</a></li>
+    </ul>
+  </nav>
+
+  <h1>Gerenciar Agendamentos</h1>
+
+  <table id="tabela-agendamentos">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Dia</th>
+        <th>Horário</th>
+        <th>Nome do Cliente</th>
+        <th>Tipo de Corte</th> 
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Agendamentos serão carregados aqui -->
+    </tbody>
+  </table>
+
+  <div id="editarAgendamentoModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button" onclick="fecharModalEdicao()">×</span>
+      <h2>Editar Agendamento</h2>
+      <form id="editar-agendamento-form">
+        <input type="hidden" id="editar-agendamento-id">
+        <label for="editar-dia">Dia:</label><br>
+        <input type="date" id="editar-dia" name="dia"><br>
+        <label for="editar-horario">Horário:</label><br>
+        <select id="editar-horario" name="horario">
+          <option value="">Selecione um horário</option> 
+        </select><br>
+        <label for="editar-nome">Nome:</label><br>
+        <input type="text" id="editar-nome" name="nome"><br><br>
+        <label for="editar-tipoCorte">Tipo de Corte:</label><br>
+        <select id="editar-tipoCorte" name="tipoCorte">
+          <option value="">Selecione o tipo de corte</option>
+          <option value="Corte Completo">Corte Completo</option>
+          <option value="Barba">Barba</option>
+          <option value="Pezinho">Pezinho</option>
+        </select><br><br>
+        <button type="button" onclick="salvarEdicaoAgendamento()">Salvar</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/agendamentos.js"></script> 
+</body>
+</html>
