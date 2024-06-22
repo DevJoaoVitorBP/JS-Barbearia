@@ -13,15 +13,13 @@
       <li><a href="agendamentos.html">Gerenciar Agendamentos</a></li>
     </ul>
   </nav>
-  <h1>Gerenciar Agendamentos</h1>
   <h1>Agende seu horário na Barbearia!</h1>
 
-  <div id="calendario">
-    <label for="dia">Selecione o dia:</label><br>
-    <input type="date" id="dia" name="dia" value=""> 
-  </div>
-
   <div id="formulario">
+   <div id = calendario>
+    <label for="dia">Selecione o dia:</label><br>
+    <input type="date" id="dia" name="dia" value="" placeholder="22/05/2024"> 
+  </div>
     <input type="hidden" id="agendamentoId">
 
     <label for="horario">Horário:</label><br>
@@ -39,7 +37,6 @@
       <option value="Barba">Barba</option>
       <option value="Pezinho">Pezinho</option>
     </select><br><br>
-
     <button onclick="agendar()">Agendar</button>
   </div>
 

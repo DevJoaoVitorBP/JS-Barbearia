@@ -6,7 +6,10 @@ async function obterAgendamentos() {
   try {
     const response = await fetch(apiUrl);
     const agendamentos = await response.json();
-    return agendamentos;
+    return agendamentos.map(agendamento => ({
+      ...agendamento,
+      dia: moment(agendamento.dia).format('DD/MM/YYYY') // Formatar a data
+  }));
   } catch (error) {
     console.error('Erro ao obter agendamentos:', error);
     return []; 

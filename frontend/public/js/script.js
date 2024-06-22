@@ -40,12 +40,15 @@ async function carregarAgendamentoParaEdicao(id) {
     const agendamento = await response.json();
 
     document.getElementById('dia').value = agendamento.dia;
-    document.getElementById('horario').value = agendamento.horario;
     document.getElementById('nome').value = agendamento.nomeCliente;
 
-    //  Atualizar dropdown após carregar os dados 
+    // Após carregar os dados do agendamento, atualize os horários disponíveis
     const horariosDisponiveis = await buscarHorariosDisponiveis(agendamento.dia);
-    atualizarSelectHorarios(horariosDisponiveis); 
+    atualizarSelectHorarios(horariosDisponiveis);
+
+    // Defina o horário no select APÓS atualizar as opções
+    document.getElementById('horario').value = agendamento.horario; 
+
   } catch (error) {
     console.error('Erro ao carregar agendamento:', error);
     alert('Erro ao carregar agendamento. Por favor, tente novamente.');
@@ -71,8 +74,12 @@ inputData.addEventListener('change', async () => {
 
 // Função para processar o agendamento 
 async function agendar() {
+  const dia = document.getElementById('dia').value;
+  const horario = document.getElementById('horario').value;
+  const nome = document.getElementById('nome').value;
+  const tipoCorte = document.getElementById('tipoCorte').value;
 
-  const data = { dia, horario, nomeCliente: nome };
+  const data = { dia, horario, nomeCliente: nome, tipoCorte };
 
   try {
     let response;
@@ -92,16 +99,18 @@ async function agendar() {
       });
     }
 
+
     const result = await response.json();
     console.log(result);
 
     if (response.ok) {
-      // ... (Atualizar lista de horários, exibir mensagem de sucesso e limpar campos - igual ao anterior) 
+      // Sucesso: Atualizar UI conforme necessário
+      alert("Agendamento efetuado com sucesso!");
 
-      // Remover o ID do agendamento da URL após a edição (opcional)
-      if (agendamentoId) {
-        window.history.replaceState({}, document.title, window.location.pathname); 
-      }
+      document.getElementById('dia').value = '';
+      document.getElementById('horario').value = '';
+      document.getElementById('nome').value = '';
+      document.getElementById('tipoCorte').value = '';
     } else {
       alert("Erro ao processar agendamento. Por favor, tente novamente mais tarde.");
     }
